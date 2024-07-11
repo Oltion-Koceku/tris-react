@@ -1,0 +1,28 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .line {
+      stroke: #000;
+      stroke-width: 10;
+      stroke-linecap: round;
+    }
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+  
+  <line class="line" x1="50" y1="50" x2="150" y2="150" stroke-dasharray="141.4" stroke-dashoffset="141.4">
+    <animate attributeName="stroke-dashoffset" from="141.4" to="0" dur="1s" fill="freeze" />
+    <animateTransform attributeName="transform" type="scale" additive="sum"
+      values="1; 1.1; 1" dur="1s" begin="1s" repeatCount="indefinite" />
+  </line>
+  
+  <line class="line" x1="150" y1="50" x2="50" y2="150" stroke-dasharray="141.4" stroke-dashoffset="141.4">
+    <animate attributeName="stroke-dashoffset" from="141.4" to="0" dur="1s" begin="0.5s" fill="freeze" />
+    <animateTransform attributeName="transform" type="scale" additive="sum"
+      values="1; 1.1; 1" dur="1s" begin="1.5s" repeatCount="indefinite" />
+  </line>
+</svg>

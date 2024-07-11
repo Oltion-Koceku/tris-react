@@ -1,0 +1,26 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .circle {
+      fill: none;
+      stroke: #000;
+      stroke-width: 10;
+      stroke-linecap: round;
+    }
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+  
+  <circle class="circle" cx="100" cy="100" r="70" 
+          stroke-dasharray="439.8" stroke-dashoffset="439.8">
+    <animate attributeName="stroke-dashoffset" from="439.8" to="0" 
+             dur="2s" fill="freeze" />
+    <animateTransform attributeName="transform" type="scale" 
+                      additive="sum" values="1; 1.05; 1" 
+                      dur="1.5s" begin="2s" repeatCount="indefinite" />
+  </circle>
+</svg>
