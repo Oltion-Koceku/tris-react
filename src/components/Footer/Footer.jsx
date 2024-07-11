@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./Footer.css";
+import "./Footer.scss";
 
-function Header() {
+function Footer() {
   return (
-   <footer>Ciao bello</footer>
+   <footer></footer>
   );
 }
 

@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App d-flex flex-column justify-content-between h-100">
       <Header />
       <Main />
       <Footer />

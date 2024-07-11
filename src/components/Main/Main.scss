@@ -1,0 +1,22 @@
+main {
+  height: 100%;
+  background-color: aquamarine;
+  .bord {
+    height: calc(100% / 3);
+    width: calc(100% / 3);
+    background-color: aquamarine;
+    &_1 {
+      border-right: 25px solid #0DA192;
+      border-bottom: 25px solid #0DA192;
+      
+    }
+    &_2 {
+      // border-right: 5px solid black;
+      border-bottom: 25px solid #0DA192;
+    }
+    &_3 {
+      border-right: 25px solid #0DA192;
+    }
+    
+  }
+}
