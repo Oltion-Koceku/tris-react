@@ -10,7 +10,7 @@ function App() {
     <div className="App d-flex flex-column justify-content-between h-100">
       <Header />
       <Main />
-      <Footer />
+
     </div>
   );
 }
