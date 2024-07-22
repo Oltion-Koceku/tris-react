@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
+//forwardRef e useImperativeHandle per esporre la funzione reset al componente padre (App).
 import "./Main.scss";
 import X_card from "../Partials/X_card";
 import O_card from "../Partials/O_card";
 
-function Main() {
+
+const Main = forwardRef((props, ref) => {
   // Creo un array che contiene i componenti, inizialmente tutti null
   const [components, setComponents] = useState(Array(9).fill(null));
   // Counter per determinare se inserire X o O
@@ -14,8 +16,18 @@ function Main() {
   const[pari, setPari] = useState(false)
   const[counterPari, setCounterPari] = useState(0)
 
-  
+  useImperativeHandle(ref, () => ({
+    reset,
+  }));
 
+  
+  const reset = () =>{
+    setComponents(Array(9).fill(null))
+    setCounter(0)
+    setWinner(null)
+    setPari(false)
+    setCounterPari(0)
+  }
   // Funzione che viene chiamata quando si clicca su una casella
   const squareClick = (index) => {
     if (counterPari < 9) {
@@ -94,13 +106,13 @@ function Main() {
   };
 
   return (
-    <main className="h-100  d-flex flex-column align-items-center">
+    <main className="h-100 d-flex flex-column align-items-center">
       <div className="container px-5 h-100">
         <div className="row p-3 justify-content-center h-100 align-items-center row-cols-3">
           {components.map((component, index) => (
             <div
               key={index}
-              onClick={() => squareClick(index)} // Passo l'indice della casella cliccata
+              onClick={() => squareClick(index)}
               className="col bord bord_1 d-flex justify-content-center"
             >
               {renderComponent(component)}
@@ -110,19 +122,16 @@ function Main() {
       </div>
       {winner && (
         <div className="win container text-center text-danger">
-          {winner === "X_card"
-            ? "X ha vinto!"
-            : "O ha vinto!" || winner === null}
+          {winner === "X_card" ? "X ha vinto!" : "O ha vinto!" || winner === null}
         </div>
       )}
-
       {pari && (
         <div className="win container text-center text-danger">
           Pareggio
-      </div>
+        </div>
       )}
     </main>
   );
-}
+});
 
 export default Main;
